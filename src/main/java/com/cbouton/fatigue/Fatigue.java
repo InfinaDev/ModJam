@@ -1,6 +1,7 @@
 package com.cbouton.fatigue;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
@@ -13,11 +14,22 @@ import com.cbouton.fatigue.lib.Statics;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = Statics.MODID, version = Statics.VERSION)
 public class Fatigue {
 	public int difficulty;
-	public static final Item coffeeSeeds = new CoffeeSeedsItem(5479);
+	public Item coffeeSeeds;
+	
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
+		//Create the coffee seeds item
+		coffeeSeeds = new CoffeeSeedsItem(5624)
+			.setMaxStackSize(64)
+			.setCreativeTab(CreativeTabs.tabMisc)
+			.setUnlocalizedName("coffeeSeeds");
+	}
     
     @EventHandler
     public void init(FMLInitializationEvent event) {
@@ -27,6 +39,8 @@ public class Fatigue {
     	//TODO: Get game mode updates
     	difficulty = Minecraft.getMinecraft().theWorld.difficultySetting;
         System.out.println(Statics.MODID + " Version " + Statics.VERSION + " Loaded");
+        
+        LanguageRegistry.addName(coffeeSeeds, "Coffee Seeds");
     }
 }
 /*
