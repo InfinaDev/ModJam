@@ -1,7 +1,8 @@
 *.class
 
-# Package Files #
-
+/.gradle
+/bin
 /build
 .project
 .classpath
+/eclipse
