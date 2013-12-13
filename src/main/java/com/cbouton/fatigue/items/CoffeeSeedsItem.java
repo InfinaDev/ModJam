@@ -4,7 +4,7 @@ import net.minecraft.item.Item;
 
 public class CoffeeSeedsItem extends Item {
 
-	public CoffeeSeedsItem(int id) {
+	public CoffeeSeedsItem(int id, int plantId, int soilId) {
 		super(id);
 	}
 	

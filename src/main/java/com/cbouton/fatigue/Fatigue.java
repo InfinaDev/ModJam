@@ -1,12 +1,14 @@
 package com.cbouton.fatigue;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 
+import com.cbouton.fatigue.blocks.CoffeePlantBlock;
 import com.cbouton.fatigue.events.playerEvent;
 import com.cbouton.fatigue.items.CoffeeSeedsItem;
 import com.cbouton.fatigue.lib.Statics;
@@ -15,21 +17,27 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = Statics.MODID, version = Statics.VERSION)
 public class Fatigue {
 	public int difficulty;
 	public Item coffeeSeeds;
+	public Block coffeePlant;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		//Create the coffee seeds item
-		coffeeSeeds = new CoffeeSeedsItem(5624)
+		coffeeSeeds = new CoffeeSeedsItem(5624, 5625, Block.tilledField.blockID)
 			.setMaxStackSize(64)
 			.setCreativeTab(CreativeTabs.tabMisc)
 			.setUnlocalizedName("coffeeSeeds")
 			.setTextureName("fatigue:coffeeBeans");
+		
+		coffeePlant = new CoffeePlantBlock(5625, Material.cactus)
+			.setHardness(0.5f)
+			.setUnlocalizedName("coffeePlant");
 	}
     
     @EventHandler
@@ -41,7 +49,12 @@ public class Fatigue {
     	difficulty = Minecraft.getMinecraft().theWorld.difficultySetting;
         System.out.println(Statics.MODID + " Version " + Statics.VERSION + " Loaded");
         
+        GameRegistry.registerBlock(coffeePlant, "coffeePlant");
+        
         LanguageRegistry.addName(coffeeSeeds, "Coffee Seeds");
+        LanguageRegistry.addName(coffeePlant, "Coffee Plant");
+        
+        MinecraftForge.addGrassSeed(new ItemStack(coffeeSeeds), 10);
     }
 }
 /*
