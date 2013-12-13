@@ -1,8 +1,12 @@
 *.class
 
-/.gradle
 /bin
 /build
-.project
-.classpath
 /eclipse
+
+!.gitignore
+/.*
+._*
+*~
+*.bak
+/.gradle/
