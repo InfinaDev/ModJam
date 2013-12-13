@@ -23,8 +23,8 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(modid = Statics.MODID, version = Statics.VERSION)
 public class Fatigue {
 	public int difficulty;
-	public Item coffeeSeeds;
-	public Block coffeePlant;
+	public static Item coffeeSeeds;
+	public static Block coffeePlant;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
