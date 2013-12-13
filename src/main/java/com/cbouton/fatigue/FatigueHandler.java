@@ -17,4 +17,9 @@ public class FatigueHandler {
 		return 1;
 	}
 
+	public void initFatigue(EntityPlayer player, int amount) {
+		// TODO set player fatigue upon join
+
+	}
+
 }
