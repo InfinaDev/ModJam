@@ -1,0 +1,98 @@
+****************************
+ Powered By MCP:            
+ http://mcp.ocean-labs.de/  
+ Searge, ProfMobius, Fesh0r,
+ R4wk, ZeuX, IngisKahn      
+ MCP Data version : unknown
+****************************
+:extractUserDev
+:getAssetsIndex
+:getAssets
+Current status: 1/1120   0%
+Error downloading asset: bd/bdf48ef6b5d0d23bbb02e17d04865216179f510a
+Error downloading asset: 0d/0d000710b71ca9aafabd8f587768431d0b560b32
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/bd/bdf48ef6b5d0d23bbb02e17d04865216179f510a
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/0d/0d000710b71ca9aafabd8f587768431d0b560b32
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+Error downloading asset: bd/bdf48ef6b5d0d23bbb02e17d04865216179f510a
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/bd/bdf48ef6b5d0d23bbb02e17d04865216179f510a
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+Error downloading asset: 0d/0d000710b71ca9aafabd8f587768431d0b560b32
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/0d/0d000710b71ca9aafabd8f587768431d0b560b32
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+Error downloading asset: bd/bdf48ef6b5d0d23bbb02e17d04865216179f510a
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/bd/bdf48ef6b5d0d23bbb02e17d04865216179f510a
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+Error downloading asset: 0d/0d000710b71ca9aafabd8f587768431d0b560b32
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/0d/0d000710b71ca9aafabd8f587768431d0b560b32
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+Error downloading asset: bd/bdf48ef6b5d0d23bbb02e17d04865216179f510a
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/bd/bdf48ef6b5d0d23bbb02e17d04865216179f510a
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+Error downloading asset: 0d/0d000710b71ca9aafabd8f587768431d0b560b32
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/0d/0d000710b71ca9aafabd8f587768431d0b560b32
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+Error downloading asset: 0d/0d000710b71ca9aafabd8f587768431d0b560b32
+Error downloading asset: bd/bdf48ef6b5d0d23bbb02e17d04865216179f510a
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/0d/0d000710b71ca9aafabd8f587768431d0b560b32
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/bd/bdf48ef6b5d0d23bbb02e17d04865216179f510a
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+Error downloading asset: 92/92750c5f93c312ba9ab413d546f32190c56d6f1f
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/92/92750c5f93c312ba9ab413d546f32190c56d6f1f
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+Error downloading asset: 99/991b421dfd401f115241601b2b373140a8d78572
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/99/991b421dfd401f115241601b2b373140a8d78572
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+Error downloading asset: 92/92750c5f93c312ba9ab413d546f32190c56d6f1f
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/92/92750c5f93c312ba9ab413d546f32190c56d6f1f
+Error downloading asset: 99/991b421dfd401f115241601b2b373140a8d78572
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/99/991b421dfd401f115241601b2b373140a8d78572
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+Error downloading asset: 92/92750c5f93c312ba9ab413d546f32190c56d6f1f
+Error downloading asset: 99/991b421dfd401f115241601b2b373140a8d78572
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/92/92750c5f93c312ba9ab413d546f32190c56d6f1f
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/99/991b421dfd401f115241601b2b373140a8d78572
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+Error downloading asset: 92/92750c5f93c312ba9ab413d546f32190c56d6f1f
+java.io.IOException: Server returned HTTP response code: 403 for URL: http://resources.download.minecraft.net/92/92750c5f93c312ba9ab413d546f32190c56d6f1f
+Error downloading asset: 99/991b421dfd401f115241601b2b373140a8d78572
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URL.openStream(URL.java:1037)
+	at net.minecraftforge.gradle.tasks.DownloadAssetsTask$AssetsThread.run(DownloadAssetsTask.java:176)
+java.io.IOException: Server returned HTTP respo
