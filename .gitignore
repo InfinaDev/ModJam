@@ -11,3 +11,8 @@
 *~
 *.bak
 /.gradle/
+
+#Ignore minecraft build files
+!/src
+!/gradle
+/*

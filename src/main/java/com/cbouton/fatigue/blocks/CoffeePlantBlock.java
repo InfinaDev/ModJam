@@ -13,8 +13,8 @@ import net.minecraftforge.common.IPlantable;
 
 public class CoffeePlantBlock extends Block {
 
-	public CoffeePlantBlock(int id, Material mat) {
-		super(id, mat);
+	public CoffeePlantBlock(int id) {
+		super(id, Material.cactus);
 		setTickRandomly(true);
 	}
 	

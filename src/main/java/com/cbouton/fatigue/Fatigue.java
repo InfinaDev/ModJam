@@ -1,7 +1,6 @@
 package com.cbouton.fatigue;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -16,26 +15,29 @@ import com.cbouton.fatigue.lib.Statics;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(modid = Statics.MODID, version = Statics.VERSION)
 public class Fatigue {
-	public int difficulty;
+	public int difficulty = 1;
 	public static Item coffeeSeeds;
 	public static Block coffeePlant;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		//Create the coffee seeds item
-		coffeeSeeds = new CoffeeSeedsItem(5624, 5625, Block.tilledField.blockID)
+		coffeeSeeds = new CoffeeSeedsItem(504, 505, Block.tilledField.blockID)
 			.setMaxStackSize(64)
 			.setCreativeTab(CreativeTabs.tabMisc)
 			.setUnlocalizedName("coffeeSeeds")
 			.setTextureName("fatigue:coffeeBeans");
 		
-		coffeePlant = new CoffeePlantBlock(5625, Material.cactus)
+		coffeePlant = new CoffeePlantBlock(505)
 			.setHardness(0.5f)
 			.setUnlocalizedName("coffeePlant");
 	}
@@ -44,9 +46,8 @@ public class Fatigue {
     public void init(FMLInitializationEvent event) {
 		//TODO: Register Movement, Player Sleep and Item Use Events.
     	MinecraftForge.EVENT_BUS.register(new playerEvent());
+
     	
-    	//TODO: Get game mode updates
-    	difficulty = Minecraft.getMinecraft().theWorld.difficultySetting;
         System.out.println(Statics.MODID + " Version " + Statics.VERSION + " Loaded");
         
         GameRegistry.registerBlock(coffeePlant, "coffeePlant");
