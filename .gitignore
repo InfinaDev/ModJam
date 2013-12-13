@@ -3,7 +3,8 @@
 /bin
 /build
 /eclipse
-
+*.log
+*.log.*
 !.gitignore
 /.*
 ._*
