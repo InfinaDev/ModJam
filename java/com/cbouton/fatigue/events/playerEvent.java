@@ -20,7 +20,7 @@ public class playerEvent {
 	@ForgeSubscribe
 	public void playerSleep(AttackEntityEvent event) {
 		EntityPlayer player = event.entityPlayer;
-		if(!event.isCanceled()){
+		if (!event.isCanceled()) {
 			handler.decreaseFatigue(player, 3);
 		}
 	}
