@@ -28,7 +28,8 @@ public class Fatigue {
 		coffeeSeeds = new CoffeeSeedsItem(5624)
 			.setMaxStackSize(64)
 			.setCreativeTab(CreativeTabs.tabMisc)
-			.setUnlocalizedName("coffeeSeeds");
+			.setUnlocalizedName("coffeeSeeds")
+			.setTextureName("fatigue:coffeeBeans");
 	}
     
     @EventHandler

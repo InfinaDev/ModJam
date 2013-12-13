@@ -8,6 +8,4 @@ public class CoffeeSeedsItem extends Item {
 		super(id);
 	}
 	
-	
-	
 }
