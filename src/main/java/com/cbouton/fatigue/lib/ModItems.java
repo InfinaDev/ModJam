@@ -18,8 +18,8 @@ public class ModItems {
 	public static void init() {
 		Item coffeeSeeds = new CoffeeSeedsItem(ItemStatics.ITEM_COFFEE_SEEDS);
 		Item woodenMug = new WoodenMugItem(ItemStatics.ITEM_WOODEN_MUG);
-		Item coldCoffee = new ColdCoffeeItem(ItemStatics.ITEM_COLD_COFFEE);
-		Item hotCoffee = new HotCoffeeItem(ItemStatics.ITEM_HOT_COFFEE, 10, 1f, true);
+		Item coldCoffee = new ColdCoffeeItem(ItemStatics.ITEM_COLD_COFFEE, 2, 1f, true);
+		Item hotCoffee = new HotCoffeeItem(ItemStatics.ITEM_HOT_COFFEE, 4, 1f, true);
 
 		GameRegistry.registerItem(woodenMug, woodenMug.getUnlocalizedName()
 				.replace("item.", ""), Statics.MODID);

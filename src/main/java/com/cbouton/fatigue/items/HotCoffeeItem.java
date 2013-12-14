@@ -10,8 +10,8 @@ import net.minecraft.world.World;
 
 public class HotCoffeeItem extends ItemFood {
 
-	public HotCoffeeItem(int id, int healthRegen, float probabilityOfPotionEffect, boolean canAlwaysEat) {
-		super(id, healthRegen, probabilityOfPotionEffect, canAlwaysEat);
+	public HotCoffeeItem(int id, int hungerRegen, float probabilityOfPotionEffect, boolean canAlwaysEat) {
+		super(id, hungerRegen, probabilityOfPotionEffect, canAlwaysEat);
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabFood);
 		setUnlocalizedName("hotCoffee");
