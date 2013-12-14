@@ -9,6 +9,9 @@ import net.minecraftforge.common.MinecraftForge;
 import com.cbouton.fatigue.events.playerEvent;
 import com.cbouton.fatigue.items.CoffeeSeedsItem;
 import com.cbouton.fatigue.items.WoodenMugItem;
+import com.cbouton.fatigue.lib.Config;
+import com.cbouton.fatigue.lib.ItemStatics;
+import com.cbouton.fatigue.lib.ModItems;
 import com.cbouton.fatigue.lib.Statics;
 
 import cpw.mods.fml.common.Mod;
@@ -30,33 +33,16 @@ public class Fatigue {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		//Create the coffee seeds item
-		coffeeSeeds = new CoffeeSeedsItem(504)
-			.setMaxStackSize(64)
-			.setCreativeTab(CreativeTabs.tabMisc)
-			.setUnlocalizedName("coffeeSeeds")
-			.setTextureName("fatigue:coffeeBeans");
-		
-		woodenMug = new WoodenMugItem(505);
+		Config.init(event.getSuggestedConfigurationFile());
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		ModItems.init();
 		// TODO: Register Movement, Player Sleep and Item Use Events.
 		MinecraftForge.EVENT_BUS.register(new playerEvent());
-
 		System.out.println(Statics.MODID + " Version " + Statics.VERSION
 				+ " Loaded");
-
-		LanguageRegistry.addName(coffeeSeeds, "Coffee Seeds");
-
-		MinecraftForge.addGrassSeed(new ItemStack(coffeeSeeds), 10);
-	}
-
-	private void craftWoodenMug() {
-		ItemStack woodStack = new ItemStack(Block.wood);
-
-		GameRegistry.addRecipe(new ItemStack(woodenMug));
 	}
 }
 /*
