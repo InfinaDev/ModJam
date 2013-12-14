@@ -19,6 +19,12 @@ public class Config {
 			ItemStatics.ITEM_WOODEN_MUG = configuration.getItem("Wooden Mug",
 					ItemStatics.ITEM_WOODEN_MUG_DEFAULT).getInt(
 					ItemStatics.ITEM_WOODEN_MUG_DEFAULT) - 256;
+			ItemStatics.ITEM_COLD_COFFEE = configuration.getItem("Cold Coffee",
+					ItemStatics.ITEM_COLD_COFFEE_DEFAULT).getInt(
+					ItemStatics.ITEM_COLD_COFFEE_DEFAULT) - 256;
+			ItemStatics.ITEM_HOT_COFFEE = configuration.getItem("Hot Coffee",
+					ItemStatics.ITEM_HOT_COFFEE_DEFAULT).getInt(
+					ItemStatics.ITEM_HOT_COFFEE_DEFAULT) - 256;
 
 		} catch (Exception e) {
 			FMLLog.log(Level.SEVERE, e, "Fatigue has had a problem loading its configuration");

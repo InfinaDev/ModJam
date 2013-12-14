@@ -2,6 +2,7 @@ package com.cbouton.fatigue.events;
 
 import com.cbouton.fatigue.FatigueHandler;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.ForgeSubscribe;
@@ -27,7 +28,7 @@ public class playerEvent {
 		}
 	}
 	@ForgeSubscribe
-	public void playerLeave(EntityJoinWorldEvent event){
+	public void playerJoin(EntityJoinWorldEvent event){
 		if (event.entity instanceof EntityPlayer){
 		EntityPlayer player = (EntityPlayer) event.entity;
 		int amount = nbt.getInteger(player.toString());

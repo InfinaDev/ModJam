@@ -37,7 +37,7 @@ public class ModItems {
 		
 		//Crafting of cold coffee
 		ItemStack coldCoffeeStack = new ItemStack(coldCoffee);
-		ItemStack waterStack = new ItemStack(Item.bucketWater);
+		ItemStack waterStack = new ItemStack(Item.bucketWater.setContainerItem(Item.bucketEmpty));
 		ItemStack coffeeSeedStack = new ItemStack(coffeeSeeds);
 		
 		//Hot coffee smelting
@@ -45,7 +45,7 @@ public class ModItems {
 
 		//Crafting recipes
 		GameRegistry.addRecipe(woodMug, "WWS", "WWS", "WWS", 'W', woodStack, 'S', stick);
-		GameRegistry.addRecipe(coldCoffeeStack, " W ", " S ", " M ", 'W', waterStack, 'S', coffeeSeedStack);
+		GameRegistry.addRecipe(coldCoffeeStack, " W ", " S ", " M ", 'W', waterStack, 'S', coffeeSeedStack, 'M', woodMug);
 		
 		//Smelting recipes
 		GameRegistry.addSmelting(coldCoffee.itemID, hotCoffeeStack, 0.1f);
