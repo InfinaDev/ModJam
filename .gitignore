@@ -1,18 +1,23 @@
 *.class
 
-/bin
-/build
-/eclipse
+/bin/
+/build/
+/eclipse/
 *.log
 *.log.*
+.classpath
+.project
 !.gitignore
-/.*
-._*
-*~
-*.bak
 /.gradle/
+/.settings/
+!/gradle/
+!/src/
 
 #Ignore minecraft build files
-!/src
-!/gradle
-/*
+/config/
+/crash-reports/
+/mods/
+/resourcepacks/
+/saves/
+/stats/
+options.txt
