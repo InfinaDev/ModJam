@@ -11,8 +11,10 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = Statics.MODID, version = Statics.VERSION)
+@NetworkMod(clientSideRequired = true, serverSideRequired = true, channels = Statics.CHANNEL, packetHandler=PacketHandler.class)
 public class Fatigue {
 	public int difficulty = 1;
 
