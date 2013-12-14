@@ -25,10 +25,6 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class Fatigue {
 	public int difficulty = 1;
 
-	// Init items
-	public Item coffeeSeeds;
-	public Item woodenMug;
-
 	// TODO: Init blocks
 
 	@EventHandler

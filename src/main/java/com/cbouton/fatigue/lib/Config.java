@@ -1,6 +1,9 @@
 package com.cbouton.fatigue.lib;
 
 import java.io.File;
+import java.util.logging.Level;
+
+import cpw.mods.fml.common.FMLLog;
 
 import net.minecraftforge.common.Configuration;
 
@@ -18,7 +21,10 @@ public class Config {
 					ItemStatics.ITEM_WOODEN_MUG_DEFAULT) - 256;
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			FMLLog.log(Level.SEVERE, e, "Fatigue has had a problem loading its configuration");
+		}
+		finally {
+			configuration.save();
 		}
 
 	}

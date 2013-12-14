@@ -17,12 +17,16 @@ public class ModItems {
 		Item coffeeSeeds = new CoffeeSeedsItem(ItemStatics.ITEM_COFFEE_SEEDS);
 		Item woodenMug = new WoodenMugItem(ItemStatics.ITEM_WOODEN_MUG);
 
+		GameRegistry.registerItem(woodenMug, woodenMug.getUnlocalizedName()
+				.replace("item.", ""), Statics.MODID);
+		GameRegistry.registerItem(coffeeSeeds, coffeeSeeds.getUnlocalizedName()
+				.replace("item.", ""), Statics.MODID);
+
 		ItemStack woodStack = new ItemStack(Block.wood);
 		ItemStack stick = new ItemStack(Item.stick);
 		ItemStack woodMug = new ItemStack(woodenMug);
 
-		GameRegistry.addRecipe(woodMug, "ww ", "wws", "wws", 'w', woodStack,
-				's', stick);
+		GameRegistry.addRecipe(woodMug, "WWS", "WWS", "WWS", 'W', woodStack, 'S', stick);
 
 		LanguageRegistry.addName(coffeeSeeds, "Coffee Seeds");
 		LanguageRegistry.addName(woodenMug, "Wooden Mug");
