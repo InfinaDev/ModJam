@@ -21,13 +21,13 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(modid = Statics.MODID, version = Statics.VERSION)
 public class Fatigue {
 	public int difficulty = 1;
-	
-	//Init items
+
+	// Init items
 	public Item coffeeSeeds;
 	public Item woodenMug;
-	
-	//TODO: Init blocks
-	
+
+	// TODO: Init blocks
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		//Create the coffee seeds item
@@ -37,30 +37,27 @@ public class Fatigue {
 			.setUnlocalizedName("coffeeSeeds")
 			.setTextureName("fatigue:coffeeBeans");
 		
-		woodenMug = new WoodenMugItem(505)
-			.setMaxStackSize(1)
-			.setCreativeTab(CreativeTabs.tabMisc)
-			.setUnlocalizedName("woodenMug")
-			.setTextureName("fatigue:woodenMug");
+		woodenMug = new WoodenMugItem(505);
 	}
-    
-    @EventHandler
-    public void init(FMLInitializationEvent event) {
-		//TODO: Register Movement, Player Sleep and Item Use Events.
-    	MinecraftForge.EVENT_BUS.register(new playerEvent());
-    	
-        System.out.println(Statics.MODID + " Version " + Statics.VERSION + " Loaded");
-        
-        LanguageRegistry.addName(coffeeSeeds, "Coffee Seeds");
-        
-        MinecraftForge.addGrassSeed(new ItemStack(coffeeSeeds), 10);
-    }
-    
-    private void craftWoodenMug() {
-    	ItemStack woodStack = new ItemStack(Block.wood);
-    	
-    	GameRegistry.addRecipe(new ItemStack(505));
-    }
+
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		// TODO: Register Movement, Player Sleep and Item Use Events.
+		MinecraftForge.EVENT_BUS.register(new playerEvent());
+
+		System.out.println(Statics.MODID + " Version " + Statics.VERSION
+				+ " Loaded");
+
+		LanguageRegistry.addName(coffeeSeeds, "Coffee Seeds");
+
+		MinecraftForge.addGrassSeed(new ItemStack(coffeeSeeds), 10);
+	}
+
+	private void craftWoodenMug() {
+		ItemStack woodStack = new ItemStack(Block.wood);
+
+		GameRegistry.addRecipe(new ItemStack(woodenMug));
+	}
 }
 /*
  * Automatic regen on peaceful Easy increases at double and decreases by half
