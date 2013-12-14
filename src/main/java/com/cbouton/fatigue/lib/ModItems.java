@@ -22,7 +22,7 @@ public class ModItems {
 		GameRegistry.registerItem(coffeeSeeds, coffeeSeeds.getUnlocalizedName()
 				.replace("item.", ""), Statics.MODID);
 
-		ItemStack woodStack = new ItemStack(Block.wood);
+		ItemStack woodStack = new ItemStack(Block.planks);
 		ItemStack stick = new ItemStack(Item.stick);
 		ItemStack woodMug = new ItemStack(woodenMug);
 
