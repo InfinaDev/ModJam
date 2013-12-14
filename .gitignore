@@ -12,6 +12,7 @@
 /.settings/
 !/gradle/
 !/src/
+*.db
 
 #Ignore minecraft build files
 /config/
