@@ -1,16 +1,9 @@
 package com.cbouton.fatigue;
 
-import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.cbouton.fatigue.events.playerEvent;
-import com.cbouton.fatigue.items.CoffeeSeedsItem;
-import com.cbouton.fatigue.items.WoodenMugItem;
 import com.cbouton.fatigue.lib.Config;
-import com.cbouton.fatigue.lib.ItemStatics;
 import com.cbouton.fatigue.lib.ModItems;
 import com.cbouton.fatigue.lib.Statics;
 
@@ -18,8 +11,6 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = Statics.MODID, version = Statics.VERSION)
 public class Fatigue {
