@@ -2,7 +2,8 @@ package com.cbouton.fatigue;
 
 import net.minecraftforge.common.MinecraftForge;
 
-import com.cbouton.fatigue.events.playerEvent;
+import com.cbouton.fatigue.handlers.FatigueEventHandler;
+import com.cbouton.fatigue.handlers.FatiguePacketHandler;
 import com.cbouton.fatigue.lib.Config;
 import com.cbouton.fatigue.lib.ModItems;
 import com.cbouton.fatigue.lib.Statics;
@@ -14,7 +15,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = Statics.MODID, version = Statics.VERSION)
-@NetworkMod(clientSideRequired = true, serverSideRequired = true, channels = Statics.CHANNEL, packetHandler=PacketHandler.class)
+@NetworkMod(clientSideRequired = true, serverSideRequired = true, channels = Statics.CHANNEL, packetHandler=FatiguePacketHandler.class)
 public class Fatigue {
 	public int difficulty = 1;
 
@@ -29,7 +30,7 @@ public class Fatigue {
 	public void init(FMLInitializationEvent event) {
 		ModItems.init();
 		// TODO: Register Movement, Player Sleep and Item Use Events.
-		MinecraftForge.EVENT_BUS.register(new playerEvent());
+		MinecraftForge.EVENT_BUS.register(new FatigueEventHandler());
 		System.out.println(Statics.MODID + " Version " + Statics.VERSION
 				+ " Loaded");
 	}
