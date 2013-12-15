@@ -12,6 +12,7 @@ import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 
 public class FatiguePacketHandler implements IPacketHandler {
+	private int fatigue;
 
 	@Override
 	public void onPacketData(INetworkManager manager,
@@ -37,6 +38,10 @@ public class FatiguePacketHandler implements IPacketHandler {
 			return;
 		}
 
+	}
+	
+	public int getFatigue() {
+		return fatigue;
 	}
 
 }
