@@ -1,12 +1,49 @@
 package com.cbouton.fatigue.handlers;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.HashMap;
 
+import com.cbouton.fatigue.lib.Statics;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.common.FMLCommonHandler;
+
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 
 public class FatigueHandler {
 	public HashMap<EntityPlayer, Short> fatigue = new HashMap<EntityPlayer, Short>();
+
+	public void sendPacket(EntityPlayer player, int amount) {
+		ByteArrayOutputStream bos = new ByteArrayOutputStream(4);
+		DataOutputStream outputStream = new DataOutputStream(bos);
+		try {
+			outputStream.writeInt(amount);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		Packet250CustomPayload packet = new Packet250CustomPayload();
+		packet.channel = Statics.CHANNEL;
+		packet.data = bos.toByteArray();
+		packet.length = bos.size();
+
+		Side side = FMLCommonHandler.instance().getEffectiveSide();
+		if (side == Side.SERVER) {
+			EntityPlayerMP playerEntity = (EntityPlayerMP) player;
+		} else if (side == Side.CLIENT) {
+			EntityClientPlayerMP playerEntity = (EntityClientPlayerMP) player;
+			playerEntity.sendQueue.addToSendQueue(packet);
+		} else {
+
+		}
+	}
 
 	public void decreaseFatigue(EntityPlayer player, int amount) {
 		// TODO: Decrease players Fatigue by amount;
@@ -16,8 +53,18 @@ public class FatigueHandler {
 		} else if (difficulty == 1) {
 			amount = (int) (amount * 0.5);
 		}
+		Short amount1 = (short) (fatigue.get(player) - amount);
+		if (amount1 <= 3000){
+			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.getId(), 1200, 2));
+			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 1200, 2));
+		} else if (amount1 >= 54000){
+			player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 1200, 2));
+			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 1200, 2));
+		}
+		
 		fatigue.remove(player);
-		fatigue.put(player, (short) amount);
+		fatigue.put(player, (short) amount1);
+		sendPacket(player, amount1);
 	}
 
 	public void increaseFatigue(EntityPlayer player, int amount) {
@@ -28,8 +75,21 @@ public class FatigueHandler {
 		} else if (difficulty == 3) {
 			amount = (int) (amount * 0.5);
 		}
+		Short amount1 = (short) (fatigue.get(player) + amount);
+		if (amount1 <= 3000){
+			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.getId(), 1200, 2));
+			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 1200, 2));
+		} else if (amount1 >= 54000){
+			player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 1200, 2));
+			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 1200, 2));
+		}
+		
+		fatigue.remove(player);
+		fatigue.put(player, (short) amount1);
+		sendPacket(player, amount1);
 		fatigue.remove(player);
 		fatigue.put(player, (short) amount);
+		sendPacket(player, amount);
 	}
 
 	public int getFatigue(EntityPlayer player) {
@@ -51,7 +111,15 @@ public class FatigueHandler {
 			}
 		} else {
 			fatigue.put(player, (short) amount);
+			if (amount <= 3000){
+				player.addPotionEffect(new PotionEffect(Potion.digSlowdown.getId(), 1200, 2));
+				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 1200, 2));
+			} else if (amount >= 54000){
+				player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 1200, 2));
+				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 1200, 2));
+			}
 		}
+		sendPacket(player, amount);
 
 	}
 
