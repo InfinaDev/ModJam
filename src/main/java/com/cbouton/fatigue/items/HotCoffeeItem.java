@@ -1,7 +1,5 @@
 package com.cbouton.fatigue.items;
 
-import com.cbouton.fatigue.lib.ModItems;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;

@@ -9,7 +9,6 @@ import com.cbouton.fatigue.lib.Statics;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.common.FMLCommonHandler;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -20,6 +19,7 @@ import net.minecraft.potion.PotionEffect;
 public class FatigueHandler {
 	public HashMap<EntityPlayer, Short> fatigue = new HashMap<EntityPlayer, Short>();
 
+	@SuppressWarnings("unused")
 	public void sendPacket(EntityPlayer player, int amount) {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream(4);
 		DataOutputStream outputStream = new DataOutputStream(bos);

@@ -22,6 +22,7 @@ public class FatiguePacketHandler implements IPacketHandler {
 
 	}
 
+	@SuppressWarnings("unused")
 	private void handlePacket(Packet250CustomPayload packet, EntityPlayer player) {
 		// TODO deal with packet data
 		DataInputStream inputStream = new DataInputStream(
