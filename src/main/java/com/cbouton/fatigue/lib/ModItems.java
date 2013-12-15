@@ -14,12 +14,15 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModItems {
+	public static Item woodenMug;
 
 	public static void init() {
 		Item coffeeSeeds = new CoffeeSeedsItem(ItemStatics.ITEM_COFFEE_SEEDS);
 		Item woodenMug = new WoodenMugItem(ItemStatics.ITEM_WOODEN_MUG);
-		Item coldCoffee = new ColdCoffeeItem(ItemStatics.ITEM_COLD_COFFEE, 2, 1f, true);
-		Item hotCoffee = new HotCoffeeItem(ItemStatics.ITEM_HOT_COFFEE, 4, 1f, true);
+		Item coldCoffee = new ColdCoffeeItem(ItemStatics.ITEM_COLD_COFFEE, 2,
+				1f, false).setContainerItem(woodenMug);
+		Item hotCoffee = new HotCoffeeItem(ItemStatics.ITEM_HOT_COFFEE, 4, 1f,
+				false).setContainerItem(woodenMug);
 
 		GameRegistry.registerItem(woodenMug, woodenMug.getUnlocalizedName()
 				.replace("item.", ""), Statics.MODID);
@@ -30,24 +33,27 @@ public class ModItems {
 		GameRegistry.registerItem(hotCoffee, hotCoffee.getUnlocalizedName()
 				.replace("item.", ""), Statics.MODID);
 
-		//Crafting for coffee mug
+		// Crafting for coffee mug
 		ItemStack woodStack = new ItemStack(Block.planks);
 		ItemStack stick = new ItemStack(Item.stick);
 		ItemStack woodMug = new ItemStack(woodenMug);
-		
-		//Crafting of cold coffee
+
+		// Crafting of cold coffee
 		ItemStack coldCoffeeStack = new ItemStack(coldCoffee);
-		ItemStack waterStack = new ItemStack(Item.bucketWater.setContainerItem(Item.bucketEmpty));
+		ItemStack waterStack = new ItemStack(
+				Item.bucketWater.setContainerItem(Item.bucketEmpty));
 		ItemStack coffeeSeedStack = new ItemStack(coffeeSeeds);
-		
-		//Hot coffee smelting
+
+		// Hot coffee smelting
 		ItemStack hotCoffeeStack = new ItemStack(hotCoffee);
 
-		//Crafting recipes
-		GameRegistry.addRecipe(woodMug, "WWS", "WWS", "WWS", 'W', woodStack, 'S', stick);
-		GameRegistry.addRecipe(coldCoffeeStack, " W ", " S ", " M ", 'W', waterStack, 'S', coffeeSeedStack, 'M', woodMug);
-		
-		//Smelting recipes
+		// Crafting recipes
+		GameRegistry.addRecipe(woodMug, "WWS", "WWS", "WWS", 'W', woodStack,
+				'S', stick);
+		GameRegistry.addRecipe(coldCoffeeStack, " W ", " S ", " M ", 'W',
+				waterStack, 'S', coffeeSeedStack, 'M', woodMug);
+
+		// Smelting recipes
 		GameRegistry.addSmelting(coldCoffee.itemID, hotCoffeeStack, 0.1f);
 
 		LanguageRegistry.addName(coffeeSeeds, "Coffee Seeds");
