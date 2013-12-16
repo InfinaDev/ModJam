@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.HashMap;
 
+import com.cbouton.fatigue.Fatigue;
 import com.cbouton.fatigue.lib.Statics;
 
 import cpw.mods.fml.relauncher.Side;
@@ -17,7 +18,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
 public class FatigueHandler {
-	public HashMap<String, Short> fatigue = new HashMap<String, Short>(); //TODO BROKEN WITH SHORT - FIX WITH INT/MAX VALUE 65535.
 
 	@SuppressWarnings("unused")
 	public void sendPacket(EntityPlayer player, int amount) {
@@ -46,75 +46,66 @@ public class FatigueHandler {
 	}
 
 	public void decreaseFatigue(EntityPlayer player, int amount) {
-		// TODO: Decrease players Fatigue by amount;
 		int difficulty = player.getEntityWorld().difficultySetting;
 		if (difficulty == 3) {
 			amount = amount * 2;
 		} else if (difficulty == 1) {
 			amount = (int) (amount * 0.5);
 		}
-		Short amount1 = (short) (fatigue.get(player.username) - amount);
-		/*if (amount1 <= 3000){
-			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.getId(), 1200, 2));
-			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 1200, 2));
-		} else if (amount1 >= 54000){
-			player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 1200, 2));
-			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 1200, 2));
-		}*/
-		
-		fatigue.remove(player);
-		fatigue.put(player.username, amount1);
+		Integer amount1 = (Fatigue.fatigue.get(player.username) - amount);
+		if (amount1 < 0) {
+			amount1 = 0;
+		}
+
+		Fatigue.fatigue.remove(player);
+		Fatigue.fatigue.put(player.username, amount1);
 		sendPacket(player, amount1);
 	}
 
 	public void increaseFatigue(EntityPlayer player, int amount) {
-		// TODO: Increase players Fatigue by amount;
 		int difficulty = player.getEntityWorld().difficultySetting;
 		if (difficulty == 1) {
 			amount = amount * 2;
 		} else if (difficulty == 3) {
 			amount = (int) (amount * 0.5);
 		}
-		Short amount1 = (short) (fatigue.get(player.username) + amount);
-		/*if (amount1 <= 3000 && !player.capabilities.isCreativeMode){
-			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.getId(), 1200, 2));
-			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 1200, 2));
-		} else if (amount1 >= 54000 && !player.capabilities.isCreativeMode){
-			player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 1200, 2));
-			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 1200, 2));
-		}*/
-		
-		fatigue.remove(player);
-		fatigue.put(player.username, amount1);
+		Integer amount1 = (Fatigue.fatigue.get(player.username) + amount);
+		if (amount1 > 65535) {
+			amount1 = 65535;
+		}
+
+		Fatigue.fatigue.remove(player);
+		Fatigue.fatigue.put(player.username, amount1);
 		sendPacket(player, amount1);
 	}
 
-	public int getFatigue(EntityPlayer player) {
-		// TODO: get Fatigue amount by player;
-		int amount = fatigue.get(player.username);
+	public int getFatigue(String username) {
+		int amount = Fatigue.fatigue.get(username);
 		return amount;
 	}
 
 	public void initFatigue(EntityPlayer player, int amount) {
-		// TODO set player fatigue upon join
 		int difficulty = player.getEntityWorld().difficultySetting;
 		if ((Integer) amount == null) {
 			if (difficulty == 3) {
 				amount = 30000;
-				fatigue.put(player.username, (short) amount);
+				Fatigue.fatigue.put(player.username, amount);
 			} else {
 				amount = 60000;
-				fatigue.put(player.username, (short) amount);
+				Fatigue.fatigue.put(player.username, amount);
 			}
 		} else {
-			fatigue.put(player.username, (short) amount);
-			/*if (amount <= 3000){
-				player.addPotionEffect(new PotionEffect(Potion.digSlowdown.getId(), 1200, 2));
-				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 1200, 2));
-			} else if (amount >= 54000){
-				player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 1200, 2));
-				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 1200, 2));
-			}*/
+			Fatigue.fatigue.put(player.username, amount);
+			/*
+			 * if (amount <= 3000){ player.addPotionEffect(new
+			 * PotionEffect(Potion.digSlowdown.getId(), 1200, 2));
+			 * player.addPotionEffect(new
+			 * PotionEffect(Potion.moveSlowdown.getId(), 1200, 2)); } else if
+			 * (amount >= 54000){ player.addPotionEffect(new
+			 * PotionEffect(Potion.digSpeed.getId(), 1200, 2));
+			 * player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(),
+			 * 1200, 2)); }
+			 */
 		}
 		sendPacket(player, amount);
 

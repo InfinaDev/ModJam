@@ -7,14 +7,16 @@ import org.lwjgl.Sys;
 
 import com.cbouton.fatigue.lib.Statics;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class FatiguePacketHandler implements IPacketHandler {
-	private int fatigue;
+	public static int fatigue;
 
 	@Override
 	public void onPacketData(INetworkManager manager,
@@ -27,7 +29,6 @@ public class FatiguePacketHandler implements IPacketHandler {
 
 	@SuppressWarnings("unused")
 	private void handlePacket(Packet250CustomPayload packet, EntityPlayer player) {
-		// TODO deal with packet data
 		DataInputStream inputStream = new DataInputStream(
 				new ByteArrayInputStream(packet.data));
 		int amount;
@@ -35,6 +36,7 @@ public class FatiguePacketHandler implements IPacketHandler {
 		try {
 			amount = inputStream.readInt();
 			System.out.println(player.username + ": " + amount);
+			setFatigue(amount);			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,7 +45,12 @@ public class FatiguePacketHandler implements IPacketHandler {
 
 	}
 	
-	public int getFatigue() {
+	public void setFatigue(int level) {
+		fatigue = level;
+		System.out.println(level);
+	}
+	
+	public static int getFatigue() {
 		return fatigue;
 	}
 

@@ -18,7 +18,7 @@ public class FatigueEventHandler {
 	}
 
 	@ForgeSubscribe
-	public void playerSleep(AttackEntityEvent event) {
+	public void playerAttack(AttackEntityEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		if (!event.isCanceled()) {
 			handler.decreaseFatigue(player, 3);
