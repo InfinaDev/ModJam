@@ -10,7 +10,6 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class FatigueCommand implements ICommand {
-	FatigueHandler handler = new FatigueHandler();
 
 	public FatigueCommand() {
 	}
@@ -41,11 +40,10 @@ public class FatigueCommand implements ICommand {
 		if (icommandsender instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) icommandsender;
 			int amount = Integer.parseInt(astring[1]);
-			System.out.println(player.username + ": " + amount);
 			if (astring[0].equalsIgnoreCase("add")) {
-				handler.increaseFatigue(player, amount);
+				FatigueHandler.increaseFatigue(player, amount);
 			} else if (astring[0].equalsIgnoreCase("subtract")) {
-				handler.decreaseFatigue(player, amount);
+				FatigueHandler.decreaseFatigue(player, amount);
 			} else {
 				getCommandUsage(icommandsender);
 			}
@@ -66,7 +64,6 @@ public class FatigueCommand implements ICommand {
 
 	@Override
 	public boolean isUsernameIndex(String[] astring, int i) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

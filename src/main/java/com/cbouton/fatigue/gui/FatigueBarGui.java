@@ -27,7 +27,7 @@ public class FatigueBarGui extends Gui {
 		if (event.isCancelable() || event.type != ElementType.EXPERIENCE) {
 			return;
 		}
-		if (minecraft.thePlayer.capabilities.isCreativeMode){
+		if (minecraft.thePlayer.capabilities.isCreativeMode) {
 			return;
 		}
 
@@ -35,8 +35,13 @@ public class FatigueBarGui extends Gui {
 		int y = 5;
 
 		// The string version of the fatigue to be rendered to the HUD
-		String fatiguePercentage = Integer.toString((FatiguePacketHandler
-				.getFatigue() * 100) / 65535) + "%";
+		String fatiguePercentage;
+		int fatigue = FatiguePacketHandler.getFatigue();
+		if (fatigue >= 60000) {
+			fatiguePercentage = "100%";
+		} else {
+			fatiguePercentage = Integer.toString((fatigue * 100) / 60000) + "%";
+		}
 
 		FontRenderer fontRender = minecraft.fontRenderer;
 
@@ -48,5 +53,4 @@ public class FatigueBarGui extends Gui {
 		int color = 0xFFFFFF;
 		fontRender.drawStringWithShadow(fatiguePercentage, x, y, color);
 	}
-
 }

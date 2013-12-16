@@ -27,11 +27,11 @@ public class FatigueTickHandler implements ITickHandler {
 		
 		if(player != null) {
 			if(handler.getFatigue() <= 3000 && !player.capabilities.isCreativeMode) {
-				player.addPotionEffect(new PotionEffect(Potion.digSlowdown.getId(), 1200, 2));
-				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 1200, 2));
+				player.addPotionEffect(new PotionEffect(Potion.digSlowdown.getId(), 2, 2));
+				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 2, 2));
 			} else if (handler.getFatigue() >= 54000 && !player.capabilities.isCreativeMode){
-				player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 1200, 2));
-				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 1200, 2));
+				player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 2, 2));
+				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 2, 2));
 			}
 		}
 	}

@@ -20,7 +20,7 @@ import net.minecraft.potion.PotionEffect;
 public class FatigueHandler {
 
 	@SuppressWarnings("unused")
-	public void sendPacket(EntityPlayer player, int amount) {
+	public static void sendPacket(EntityPlayer player, int amount) {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream(4);
 		DataOutputStream outputStream = new DataOutputStream(bos);
 		try {
@@ -45,7 +45,7 @@ public class FatigueHandler {
 		}
 	}
 
-	public void decreaseFatigue(EntityPlayer player, int amount) {
+	public static void decreaseFatigue(EntityPlayer player, int amount) {
 		int difficulty = player.getEntityWorld().difficultySetting;
 		if (difficulty == 3) {
 			amount = amount * 2;
@@ -62,7 +62,7 @@ public class FatigueHandler {
 		sendPacket(player, amount1);
 	}
 
-	public void increaseFatigue(EntityPlayer player, int amount) {
+	public static void increaseFatigue(EntityPlayer player, int amount) {
 		int difficulty = player.getEntityWorld().difficultySetting;
 		if (difficulty == 1) {
 			amount = amount * 2;
@@ -79,14 +79,14 @@ public class FatigueHandler {
 		sendPacket(player, amount1);
 	}
 
-	public int getFatigue(String username) {
+	public static int getFatigue(String username) {
 		int amount = Fatigue.fatigue.get(username);
 		return amount;
 	}
 
-	public void initFatigue(EntityPlayer player, int amount) {
+	public static void initFatigue(EntityPlayer player, int amount) {
 		int difficulty = player.getEntityWorld().difficultySetting;
-		if ((Integer) amount == null) {
+		if ((Integer) amount == 0) {
 			if (difficulty == 3) {
 				amount = 30000;
 				Fatigue.fatigue.put(player.username, amount);

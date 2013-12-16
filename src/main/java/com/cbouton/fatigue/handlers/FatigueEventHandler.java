@@ -8,20 +8,19 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 
 public class FatigueEventHandler {
-	public FatigueHandler handler = new FatigueHandler();
 	public NBTTagCompound nbt = new NBTTagCompound();
 
 	@ForgeSubscribe
 	public void playerSleep(PlayerSleepInBedEvent event) {
 		EntityPlayer player = event.entityPlayer;
-		handler.increaseFatigue(player, 18000);
+		FatigueHandler.increaseFatigue(player, 18000);
 	}
 
 	@ForgeSubscribe
 	public void playerAttack(AttackEntityEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		if (!event.isCanceled()) {
-			handler.decreaseFatigue(player, 3);
+			FatigueHandler.decreaseFatigue(player, 3);
 		}
 	}
 	@ForgeSubscribe
@@ -29,7 +28,7 @@ public class FatigueEventHandler {
 		if (event.entity instanceof EntityPlayer){
 		EntityPlayer player = (EntityPlayer) event.entity;
 		int amount = nbt.getInteger(player.toString());
-			handler.initFatigue(player, amount);
+			FatigueHandler.initFatigue(player, amount);
 		}
 	}
 }
