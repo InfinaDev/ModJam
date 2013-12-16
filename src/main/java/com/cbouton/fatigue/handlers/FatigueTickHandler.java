@@ -26,10 +26,10 @@ public class FatigueTickHandler implements ITickHandler {
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		
 		if(player != null) {
-			if(handler.getFatigue() <= 3000) {
+			if(handler.getFatigue() <= 3000 && !player.capabilities.isCreativeMode) {
 				player.addPotionEffect(new PotionEffect(Potion.digSlowdown.getId(), 1200, 2));
 				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 1200, 2));
-			} else if (handler.getFatigue() >= 54000){
+			} else if (handler.getFatigue() >= 54000 && !player.capabilities.isCreativeMode){
 				player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 1200, 2));
 				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 1200, 2));
 			}

@@ -14,7 +14,7 @@ public class FatigueEventHandler {
 	@ForgeSubscribe
 	public void playerSleep(PlayerSleepInBedEvent event) {
 		EntityPlayer player = event.entityPlayer;
-		handler.increaseFatigue(player, 2000);
+		handler.increaseFatigue(player, 18000);
 	}
 
 	@ForgeSubscribe
