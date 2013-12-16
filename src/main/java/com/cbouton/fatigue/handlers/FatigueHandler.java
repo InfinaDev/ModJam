@@ -17,7 +17,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
 public class FatigueHandler {
-	public HashMap<String, Short> fatigue = new HashMap<String, Short>();
+	public HashMap<String, Short> fatigue = new HashMap<String, Short>(); //TODO BROKEN WITH SHORT - FIX WITH INT/MAX VALUE 65535.
 
 	@SuppressWarnings("unused")
 	public void sendPacket(EntityPlayer player, int amount) {

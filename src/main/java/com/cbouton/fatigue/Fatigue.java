@@ -63,7 +63,7 @@ public class Fatigue {
  * players spawn at 50% fatigue
  * 
  * Sleeping is the best way to increase fatigue Mounted for a full day increases
- * fatigue by 1/4 of sleeping if not moving. if moving, fatigue decreases at 50%
+ * fatigue by 1/3 of sleeping if not moving. if moving, fatigue decreases at 50%
  * the difficulty rate
  * 
  * Values can be determined later.

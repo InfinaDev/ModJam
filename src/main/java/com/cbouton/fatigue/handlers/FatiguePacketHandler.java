@@ -3,6 +3,8 @@ package com.cbouton.fatigue.handlers;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
+import org.lwjgl.Sys;
+
 import com.cbouton.fatigue.lib.Statics;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,6 +34,7 @@ public class FatiguePacketHandler implements IPacketHandler {
 
 		try {
 			amount = inputStream.readInt();
+			System.out.println(player.username + ": " + amount);
 
 		} catch (Exception e) {
 			e.printStackTrace();
