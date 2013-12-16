@@ -33,6 +33,7 @@ public class FatigueHandler {
 		packet.channel = Statics.CHANNEL;
 		packet.data = bos.toByteArray();
 		packet.length = bos.size();
+		System.out.println(player.username + ": " + amount);
 
 		Side side = FMLCommonHandler.instance().getEffectiveSide();
 		if (side == Side.SERVER) {

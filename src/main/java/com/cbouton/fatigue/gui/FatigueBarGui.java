@@ -36,7 +36,7 @@ public class FatigueBarGui extends Gui {
 
 		// The string version of the fatigue to be rendered to the HUD
 		String fatiguePercentage;
-		int fatigue = FatiguePacketHandler.getFatigue();
+		int fatigue = FatigueHandler.getFatigue(minecraft.thePlayer.username);
 		if (fatigue >= 60000) {
 			fatiguePercentage = "100%";
 		} else {

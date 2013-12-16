@@ -18,20 +18,27 @@ public class FatigueTickHandler implements ITickHandler {
 	}
 
 	@Override
-	public void tickEnd(EnumSet<TickType> type, Object... tickData) {}
+	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
+	}
 
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
 		FatiguePacketHandler handler = new FatiguePacketHandler();
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-		
-		if(player != null) {
-			if(handler.getFatigue() <= 3000 && !player.capabilities.isCreativeMode) {
-				player.addPotionEffect(new PotionEffect(Potion.digSlowdown.getId(), 2, 2));
-				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 2, 2));
-			} else if (handler.getFatigue() >= 54000 && !player.capabilities.isCreativeMode){
-				player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 2, 2));
-				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 2, 2));
+
+		if (player != null) {
+			if (FatigueHandler.getFatigue(player.username) <= 3000
+					&& !player.capabilities.isCreativeMode) {
+				player.addPotionEffect(new PotionEffect(Potion.digSlowdown
+						.getId(), 2, 2));
+				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown
+						.getId(), 2, 2));
+			} else if (FatigueHandler.getFatigue(player.username) >= 54000
+					&& !player.capabilities.isCreativeMode) {
+				player.addPotionEffect(new PotionEffect(
+						Potion.digSpeed.getId(), 2, 2));
+				player.addPotionEffect(new PotionEffect(Potion.moveSpeed
+						.getId(), 2, 2));
 			}
 		}
 	}

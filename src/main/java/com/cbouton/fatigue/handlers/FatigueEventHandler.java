@@ -6,6 +6,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
+import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 
 public class FatigueEventHandler {
 	public NBTTagCompound nbt = new NBTTagCompound();
@@ -17,17 +18,24 @@ public class FatigueEventHandler {
 	}
 
 	@ForgeSubscribe
+	public void breakBlock(BreakEvent event){
+		EntityPlayer player = event.getPlayer();
+		FatigueHandler.decreaseFatigue(player, 300);
+	}
+	
+	@ForgeSubscribe
 	public void playerAttack(AttackEntityEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		if (!event.isCanceled()) {
-			FatigueHandler.decreaseFatigue(player, 3);
+			FatigueHandler.decreaseFatigue(player, 30);
 		}
 	}
+
 	@ForgeSubscribe
-	public void playerJoin(EntityJoinWorldEvent event){
-		if (event.entity instanceof EntityPlayer){
-		EntityPlayer player = (EntityPlayer) event.entity;
-		int amount = nbt.getInteger(player.toString());
+	public void playerJoin(EntityJoinWorldEvent event) {
+		if (event.entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) event.entity;
+			int amount = nbt.getInteger(player.toString());
 			FatigueHandler.initFatigue(player, amount);
 		}
 	}
