@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 
+import com.cbouton.fatigue.blocks.BlockCoffee;
 import com.cbouton.fatigue.items.CoffeeSeedsItem;
 import com.cbouton.fatigue.items.ColdCoffeeItem;
 import com.cbouton.fatigue.items.HotCoffeeItem;
@@ -15,6 +16,8 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModItems {
 	public static Item woodenMug;
+	public static Item coffeeSeeds;
+	public static Block coffeeblock;
 
 	public static void init() {
 		Item coffeeSeeds = new CoffeeSeedsItem(ItemStatics.ITEM_COFFEE_SEEDS);
@@ -23,6 +26,7 @@ public class ModItems {
 				1f, false).setContainerItem(woodenMug);
 		Item hotCoffee = new HotCoffeeItem(ItemStatics.ITEM_HOT_COFFEE, 4, 1f,
 				false).setContainerItem(woodenMug);
+		Block coffeeblock = new BlockCoffee(ItemStatics.BLOCK_COFFEE);
 
 		GameRegistry.registerItem(woodenMug, woodenMug.getUnlocalizedName()
 				.replace("item.", ""), Statics.MODID);

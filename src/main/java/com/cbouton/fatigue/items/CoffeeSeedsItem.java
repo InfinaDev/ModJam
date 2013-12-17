@@ -1,5 +1,7 @@
 package com.cbouton.fatigue.items;
 
+import com.cbouton.fatigue.lib.ModItems;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.creativetab.CreativeTabs;
@@ -51,11 +53,7 @@ public class CoffeeSeedsItem extends Item {
 			}
 
 			if (par3World.isAirBlock(par4, par5, par6)) {
-				int k1 = Block.blocksList[Block.cocoaPlant.blockID] // TODO
-																	// Extend
-																	// BlockCocoa
-																	// for
-																	// BlockCoffee
+				int k1 = Block.cocoaPlant
 						.onBlockPlaced(par3World, par4, par5, par6, par7, par8,
 								par9, par10, 0);
 				par3World.setBlock(par4, par5, par6, Block.cocoaPlant.blockID,

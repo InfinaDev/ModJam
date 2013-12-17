@@ -25,11 +25,14 @@ public class Config {
 			ItemStatics.ITEM_HOT_COFFEE = configuration.getItem("Hot Coffee",
 					ItemStatics.ITEM_HOT_COFFEE_DEFAULT).getInt(
 					ItemStatics.ITEM_HOT_COFFEE_DEFAULT) - 256;
+			ItemStatics.BLOCK_COFFEE = configuration.getBlock("Coffee",
+					ItemStatics.BLOCK_COFFEE_DEFAULT).getInt(
+					ItemStatics.BLOCK_COFFEE_DEFAULT);
 
 		} catch (Exception e) {
-			FMLLog.log(Level.SEVERE, e, "Fatigue has had a problem loading its configuration");
-		}
-		finally {
+			FMLLog.log(Level.SEVERE, e,
+					"Fatigue has had a problem loading its configuration");
+		} finally {
 			configuration.save();
 		}
 
