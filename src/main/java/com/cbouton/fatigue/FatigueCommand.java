@@ -4,9 +4,12 @@ import java.util.List;
 
 import com.cbouton.fatigue.handlers.FatigueHandler;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ChatMessageComponent;
+import net.minecraft.util.EnumChatFormatting;
 
 public class FatigueCommand implements ICommand {
 
@@ -26,7 +29,7 @@ public class FatigueCommand implements ICommand {
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender) {
-		return null;
+		return "/fatigue <add|subtract> <value>";
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -39,13 +42,17 @@ public class FatigueCommand implements ICommand {
 	public void processCommand(ICommandSender icommandsender, String[] astring) {
 		if (icommandsender instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) icommandsender;
-			int amount = Integer.parseInt(astring[1]);
-			if (astring[0].equalsIgnoreCase("add")) {
-				FatigueHandler.increaseFatigue(player, amount);
-			} else if (astring[0].equalsIgnoreCase("subtract")) {
-				FatigueHandler.decreaseFatigue(player, amount);
+			if (astring.length == 2) {
+				int amount = Integer.parseInt(astring[1]);
+				if (astring[0].equalsIgnoreCase("add")) {
+					FatigueHandler.increaseFatigue(player, amount);
+				} else if (astring[0].equalsIgnoreCase("subtract")) {
+					FatigueHandler.decreaseFatigue(player, amount);
+				} else {
+					player.sendChatToPlayer(ChatMessageComponent.createFromText(getCommandUsage(icommandsender)).setColor(EnumChatFormatting.RED));
+				}
 			} else {
-				getCommandUsage(icommandsender);
+				player.sendChatToPlayer(ChatMessageComponent.createFromText(getCommandUsage(icommandsender)).setColor(EnumChatFormatting.RED));
 			}
 		}
 
@@ -53,7 +60,7 @@ public class FatigueCommand implements ICommand {
 
 	@Override
 	public boolean canCommandSenderUseCommand(ICommandSender icommandsender) {
-		return true;
+		return Minecraft.getMinecraft().getIntegratedServer().isCommandBlockEnabled();
 	}
 
 	@SuppressWarnings("rawtypes")

@@ -22,6 +22,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(modid = Statics.MODID, version = Statics.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true, channels = Statics.CHANNEL, packetHandler = FatiguePacketHandler.class)
@@ -48,13 +49,16 @@ public class Fatigue {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		MinecraftForge.EVENT_BUS.register(new FatigueBarGui(Minecraft
-				.getMinecraft()));
+		if (event.getSide().isClient()) {
+			MinecraftForge.EVENT_BUS.register(new FatigueBarGui(Minecraft
+					.getMinecraft()));
+		}
 
 		TickRegistry.registerTickHandler(new FatigueTickHandler(), Side.CLIENT);
 	}
+
 	@EventHandler
-	public void serverStart(FMLServerStartingEvent event){
+	public void serverStart(FMLServerStartingEvent event) {
 		event.registerServerCommand(new FatigueCommand());
 	}
 }
