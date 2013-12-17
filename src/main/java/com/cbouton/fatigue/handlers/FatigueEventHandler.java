@@ -22,7 +22,7 @@ public class FatigueEventHandler {
 	@ForgeSubscribe
 	public void breakBlock(BreakEvent event){
 		EntityPlayer player = event.getPlayer();
-		FatigueHandler.decreaseFatigue(player, 300);
+		FatigueHandler.decreaseFatigue(player, 30);
 	}
 	
 	@ForgeSubscribe
