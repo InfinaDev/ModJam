@@ -21,24 +21,23 @@ public class FatigueTickHandler implements ITickHandler {
 	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
 	}
 
-	@SuppressWarnings("unused")
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-
+		
 		if (player != null) {
 			if (FatigueHandler.getFatigue(player.username) < 3000
 					&& !player.capabilities.isCreativeMode) {
 				player.addPotionEffect(new PotionEffect(Potion.digSlowdown
-						.getId(), 1, 2));
+						.getId(), 600, 3));
 				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown
-						.getId(), 1, 2));
+						.getId(), 600, 3));
 			} else if (FatigueHandler.getFatigue(player.username) > 54000
 					&& !player.capabilities.isCreativeMode) {
 				player.addPotionEffect(new PotionEffect(
-						Potion.digSpeed.getId(), 1, 2));
+						Potion.digSpeed.getId(), 600, 3));
 				player.addPotionEffect(new PotionEffect(Potion.moveSpeed
-						.getId(), 1, 2));
+						.getId(), 600, 3));
 			} else {
 				player.removePotionEffect(Potion.moveSpeed.getId());
 				player.removePotionEffect(Potion.digSpeed.getId());
