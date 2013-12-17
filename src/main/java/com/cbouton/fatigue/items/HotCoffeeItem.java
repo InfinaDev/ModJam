@@ -1,5 +1,7 @@
 package com.cbouton.fatigue.items;
 
+import com.cbouton.fatigue.handlers.FatigueHandler;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -26,6 +28,8 @@ public class HotCoffeeItem extends ItemFood {
 	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
 		super.onEaten(stack, world, player);
 
+		FatigueHandler.increaseFatigue(player, 3000);
+		
 		player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 600,
 				3));
 		return stack;
