@@ -21,6 +21,7 @@ public class FatigueTickHandler implements ITickHandler {
 	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
 		FatiguePacketHandler handler = new FatiguePacketHandler();

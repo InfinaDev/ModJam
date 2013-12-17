@@ -22,7 +22,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -51,10 +50,10 @@ public class Fatigue {
 		
 		if (Minecraft.getMinecraft().isSingleplayer()){
 			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-			FatigueHandler.initFatigue(player, 0);
+			//FatigueHandler.initFatigue(player, 0);
 			NBTTagCompound nbt = new NBTTagCompound();
 			int amount = nbt.getInteger(player.toString());
-			FatigueHandler.initFatigue(player, amount);
+			//FatigueHandler.initFatigue(player, amount);
 		}
 	}
 

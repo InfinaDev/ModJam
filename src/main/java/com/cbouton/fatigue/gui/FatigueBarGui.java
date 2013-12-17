@@ -3,12 +3,10 @@ package com.cbouton.fatigue.gui;
 import org.lwjgl.opengl.GL11;
 
 import com.cbouton.fatigue.handlers.FatigueHandler;
-import com.cbouton.fatigue.handlers.FatiguePacketHandler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.EventPriority;
@@ -36,7 +34,10 @@ public class FatigueBarGui extends Gui {
 
 		// The string version of the fatigue to be rendered to the HUD
 		String fatiguePercentage;
-		int fatigue = FatigueHandler.getFatigue(minecraft.thePlayer.username);
+		int fatigue;
+		
+		fatigue = FatigueHandler.getFatigue(minecraft.thePlayer.username);
+		
 		if (fatigue >= 60000) {
 			fatiguePercentage = "100%";
 		} else {
@@ -47,9 +48,7 @@ public class FatigueBarGui extends Gui {
 
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glDisable(GL11.GL_LIGHTING);
-
-		// this.minecraft.renderEngine.bindTexture(new ResourceLocation(""));
-
+		
 		int color = 0xFFFFFF;
 		fontRender.drawStringWithShadow(fatiguePercentage, x, y, color);
 	}

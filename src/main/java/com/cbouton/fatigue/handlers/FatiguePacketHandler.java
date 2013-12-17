@@ -3,17 +3,13 @@ package com.cbouton.fatigue.handlers;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
-import org.lwjgl.Sys;
-
 import com.cbouton.fatigue.lib.Statics;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class FatiguePacketHandler implements IPacketHandler {
 

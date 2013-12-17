@@ -1,6 +1,5 @@
 package com.cbouton.fatigue;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.cbouton.fatigue.handlers.FatigueHandler;
@@ -30,6 +29,7 @@ public class FatigueCommand implements ICommand {
 		return null;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List getCommandAliases() {
 		return null;
@@ -56,6 +56,7 @@ public class FatigueCommand implements ICommand {
 		return true;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List addTabCompletionOptions(ICommandSender icommandsender,
 			String[] astring) {

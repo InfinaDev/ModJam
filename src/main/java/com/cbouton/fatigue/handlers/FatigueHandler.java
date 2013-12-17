@@ -2,7 +2,6 @@ package com.cbouton.fatigue.handlers;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.util.HashMap;
 
 import com.cbouton.fatigue.Fatigue;
 import com.cbouton.fatigue.lib.Statics;
@@ -14,8 +13,6 @@ import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.packet.Packet250CustomPayload;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 
 public class FatigueHandler {
 
