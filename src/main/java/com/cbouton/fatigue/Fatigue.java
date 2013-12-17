@@ -3,13 +3,10 @@ package com.cbouton.fatigue;
 import java.util.HashMap;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.cbouton.fatigue.gui.FatigueBarGui;
 import com.cbouton.fatigue.handlers.FatigueEventHandler;
-import com.cbouton.fatigue.handlers.FatigueHandler;
 import com.cbouton.fatigue.handlers.FatiguePacketHandler;
 import com.cbouton.fatigue.handlers.FatigueTickHandler;
 import com.cbouton.fatigue.lib.Config;
@@ -47,14 +44,6 @@ public class Fatigue {
 		MinecraftForge.EVENT_BUS.register(new FatigueEventHandler());
 		System.out.println(Statics.MODID + " Version " + Statics.VERSION
 				+ " Loaded");
-		
-		if (Minecraft.getMinecraft().isSingleplayer()){
-			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-			//FatigueHandler.initFatigue(player, 0);
-			NBTTagCompound nbt = new NBTTagCompound();
-			int amount = nbt.getInteger(player.toString());
-			//FatigueHandler.initFatigue(player, amount);
-		}
 	}
 
 	@EventHandler
