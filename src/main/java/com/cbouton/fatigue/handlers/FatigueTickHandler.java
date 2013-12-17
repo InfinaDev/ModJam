@@ -24,23 +24,28 @@ public class FatigueTickHandler implements ITickHandler {
 	@SuppressWarnings("unused")
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
-		FatiguePacketHandler handler = new FatiguePacketHandler();
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 
 		if (player != null) {
-			if (FatigueHandler.getFatigue(player.username) <= 3000
+			if (FatigueHandler.getFatigue(player.username) < 3000
 					&& !player.capabilities.isCreativeMode) {
 				player.addPotionEffect(new PotionEffect(Potion.digSlowdown
-						.getId(), 2, 2));
+						.getId(), 1, 2));
 				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown
-						.getId(), 2, 2));
-			} else if (FatigueHandler.getFatigue(player.username) >= 54000
+						.getId(), 1, 2));
+			} else if (FatigueHandler.getFatigue(player.username) > 54000
 					&& !player.capabilities.isCreativeMode) {
 				player.addPotionEffect(new PotionEffect(
-						Potion.digSpeed.getId(), 2, 2));
+						Potion.digSpeed.getId(), 1, 2));
 				player.addPotionEffect(new PotionEffect(Potion.moveSpeed
-						.getId(), 2, 2));
+						.getId(), 1, 2));
+			} else {
+				player.removePotionEffect(Potion.moveSpeed.getId());
+				player.removePotionEffect(Potion.digSpeed.getId());
+				player.removePotionEffect(Potion.moveSlowdown.getId());
+				player.removePotionEffect(Potion.digSlowdown.getId());
 			}
+
 		}
 	}
 
