@@ -1,25 +1,25 @@
 package com.cbouton.fatigue;
 
-import java.util.List;
-
 import com.cbouton.fatigue.handlers.FatigueHandler;
-
 import net.minecraft.client.Minecraft;
+import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatMessageComponent;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
-public class FatigueCommand implements ICommand {
+import java.util.List;
+
+public class FatigueCommand extends CommandBase {
 
 	public FatigueCommand() {
 	}
 
 	@Override
 	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
+        return this.getCommandName().compareTo(((ICommand) o).getCommandName());
 	}
 
 	@Override
@@ -39,9 +39,9 @@ public class FatigueCommand implements ICommand {
 	}
 
 	@Override
-	public void processCommand(ICommandSender icommandsender, String[] astring) {
-		if (icommandsender instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) icommandsender;
+	public void processCommand(ICommandSender sender, String[] astring) {
+		if (sender instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) sender;
 			if (astring.length == 2) {
 				int amount = Integer.parseInt(astring[1]);
 				if (astring[0].equalsIgnoreCase("add")) {
@@ -49,10 +49,10 @@ public class FatigueCommand implements ICommand {
 				} else if (astring[0].equalsIgnoreCase("subtract")) {
 					FatigueHandler.decreaseFatigue(player, amount);
 				} else {
-					player.sendChatToPlayer(ChatMessageComponent.createFromText(getCommandUsage(icommandsender)).setColor(EnumChatFormatting.RED));
+					throw new WrongUsageException(getCommandUsage(sender));
 				}
 			} else {
-				player.sendChatToPlayer(ChatMessageComponent.createFromText(getCommandUsage(icommandsender)).setColor(EnumChatFormatting.RED));
+                throw new WrongUsageException(getCommandUsage(sender));
 			}
 		}
 
