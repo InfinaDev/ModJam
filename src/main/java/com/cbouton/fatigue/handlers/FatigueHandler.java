@@ -2,6 +2,7 @@ package com.cbouton.fatigue.handlers;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.lang.String;
 
 import com.cbouton.fatigue.Fatigue;
 import com.cbouton.fatigue.lib.Statics;
@@ -12,11 +13,11 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.world.EnumDifficulty;
 
 public class FatigueHandler {
 
-	@SuppressWarnings("unused")
+	/*@SuppressWarnings("unused")
 	public static void sendPacket(EntityPlayer player, int amount) {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream(4);
 		DataOutputStream outputStream = new DataOutputStream(bos);
@@ -41,13 +42,13 @@ public class FatigueHandler {
 		} else {
 
 		}
-	}
+	}*/
 
 	public static void decreaseFatigue(EntityPlayer player, int amount) {
-		int difficulty = player.getEntityWorld().difficultySetting.getDifficultyId();
-		if (difficulty == 3) {
+		EnumDifficulty difficulty = player.getEntityWorld().difficultySetting;
+		if (difficulty.equals("HARD")) {
 			amount = amount * 2;
-		} else if (difficulty == 1) {
+		} else if (difficulty.equals("EASY")) {
 			amount = (int) (amount * 0.5);
 		}
 		Integer amount1 = (Fatigue.fatigue.get(player.getDisplayName()) - amount);
@@ -57,14 +58,14 @@ public class FatigueHandler {
 
 		Fatigue.fatigue.remove(player);
 		Fatigue.fatigue.put(player.getDisplayName(), amount1);
-		sendPacket(player, amount1);
+		//sendPacket(player, amount1);
 	}
 
 	public static void increaseFatigue(EntityPlayer player, int amount) {
-		int difficulty = player.getEntityWorld().difficultySetting;
-		if (difficulty == 1) {
+        EnumDifficulty difficulty = player.getEntityWorld().difficultySetting;
+		if (difficulty.equals("EASY")) {
 			amount = amount * 2;
-		} else if (difficulty == 3) {
+		} else if (difficulty.equals("HARD")) {
 			amount = (int) (amount * 0.5);
 		}
 		Integer amount1 = (Fatigue.fatigue.get(player.getDisplayName()) + amount);
@@ -74,7 +75,7 @@ public class FatigueHandler {
 
 		Fatigue.fatigue.remove(player);
 		Fatigue.fatigue.put(player.getDisplayName(), amount1);
-		sendPacket(player, amount1);
+		//sendPacket(player, amount1);
 	}
 
 	public static int getFatigue(String username) {
@@ -83,9 +84,9 @@ public class FatigueHandler {
 	}
 
 	public static void initFatigue(EntityPlayer player, int amount) {
-		int difficulty = player.getEntityWorld().difficultySetting;
+        EnumDifficulty difficulty = player.getEntityWorld().difficultySetting;
 		if ((Integer) amount == 0) {
-			if (difficulty == 3) {
+			if (difficulty.equals("HARD")) {
 				amount = 30000;
 				Fatigue.fatigue.put(player.getDisplayName(), amount);
 			} else {
@@ -105,7 +106,7 @@ public class FatigueHandler {
 			 * 1200, 2)); }
 			 */
 		}
-		sendPacket(player, amount);
+		//sendPacket(player, amount);
 
 	}
 

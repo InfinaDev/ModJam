@@ -3,7 +3,6 @@ package com.cbouton.fatigue.handlers;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
@@ -40,7 +39,7 @@ public class FatigueEventHandler {
 			EntityPlayer player = (EntityPlayer) event.entity;
 			
 			int amount = nbt.getInteger("FatigueAmount");
-			username = player.username;
+			username = player.getDisplayName();
 			
 			FatigueHandler.initFatigue(player, amount);
 		}

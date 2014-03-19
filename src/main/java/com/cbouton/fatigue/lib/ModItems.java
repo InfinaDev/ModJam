@@ -1,6 +1,8 @@
 package com.cbouton.fatigue.lib;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -13,6 +15,7 @@ import com.cbouton.fatigue.items.WoodenMugItem;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraft.item.crafting.FurnaceRecipes;
 
 public class ModItems {
 	public static Item woodenMug;
@@ -20,13 +23,13 @@ public class ModItems {
 	public static Block coffeeblock;
 
 	public static void init() {
-		Item coffeeSeeds = new CoffeeSeedsItem(ItemStatics.ITEM_COFFEE_SEEDS);
-		Item woodenMug = new WoodenMugItem(ItemStatics.ITEM_WOODEN_MUG);
-		Item coldCoffee = new ColdCoffeeItem(ItemStatics.ITEM_COLD_COFFEE, 2,
+		Item coffeeSeeds = new CoffeeSeedsItem();
+		Item woodenMug = new WoodenMugItem();
+		Item coldCoffee = new ColdCoffeeItem(2,
 				1f, false).setContainerItem(woodenMug);
-		Item hotCoffee = new HotCoffeeItem(ItemStatics.ITEM_HOT_COFFEE, 4, 1f,
+		Item hotCoffee = new HotCoffeeItem(4, 1f,
 				false).setContainerItem(woodenMug);
-		Block coffeeblock = new BlockCoffee(ItemStatics.BLOCK_COFFEE);
+		Block coffeeblock = new BlockCoffee();
 
 		GameRegistry.registerItem(woodenMug, woodenMug.getUnlocalizedName()
 				.replace("item.", ""));
@@ -37,28 +40,26 @@ public class ModItems {
 		GameRegistry.registerItem(hotCoffee, hotCoffee.getUnlocalizedName()
 				.replace("item.", ""));
 
-		// Crafting for coffee mug
-		ItemStack woodStack = new ItemStack(Block.getBlockFromName("plank"));
-		ItemStack stick = new ItemStack(Item.stick);
-		ItemStack woodMug = new ItemStack(woodenMug);
 
 		// Crafting of cold coffee
 		ItemStack coldCoffeeStack = new ItemStack(coldCoffee);
 		ItemStack waterStack = new ItemStack(
-				Item.bucketWater.setContainerItem(Item.bucketEmpty));
-		ItemStack coffeeSeedStack = new ItemStack(coffeeSeeds);
+				Items.water_bucket.setContainerItem(Items.bucket));
+		ItemStack coffeeSeedStack;
+        coffeeSeedStack = new ItemStack(coffeeSeeds);
 
-		// Hot coffee smelting
+        // Hot coffee smelting
 		ItemStack hotCoffeeStack = new ItemStack(hotCoffee);
 
 		// Crafting recipes
-		GameRegistry.addRecipe(woodMug, "WWS", "WWS", "WWS", 'W', woodStack,
-				'S', stick);
+		GameRegistry.addRecipe(new ItemStack(woodenMug), "WWS", "WWS", "WWS", 'W',
+                Blocks.planks,
+				'S', Items.stick);
 		GameRegistry.addRecipe(coldCoffeeStack, " W ", " S ", " M ", 'W',
-				waterStack, 'S', coffeeSeedStack, 'M', woodMug);
+				waterStack, 'S', coffeeSeedStack, 'M', new ItemStack(woodenMug));
 
 		// Smelting recipes
-		GameRegistry.addSmelting(coldCoffee.itemID, hotCoffeeStack, 0.1f);
+        FurnaceRecipes.smelting().func_151396_a(coldCoffee, hotCoffeeStack, 0.1f);
 
 		LanguageRegistry.addName(coffeeSeeds, "Coffee Seeds");
 		LanguageRegistry.addName(woodenMug, "Wooden Mug");

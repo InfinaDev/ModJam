@@ -13,7 +13,7 @@ public class Config {
 		Configuration configuration = new Configuration(configFile);
 		try {
 			configuration.load();
-			ItemStatics.ITEM_COFFEE_SEEDS = configuration.getItem(
+			/*ItemStatics.ITEM_COFFEE_SEEDS = configuration.getItem(
 					"Coffee Seeds", ItemStatics.ITEM_COFFEE_SEEDS_DEFAULT)
 					.getInt(ItemStatics.ITEM_COFFEE_SEEDS_DEFAULT) - 256;
 			ItemStatics.ITEM_WOODEN_MUG = configuration.getItem("Wooden Mug",
@@ -27,7 +27,7 @@ public class Config {
 					ItemStatics.ITEM_HOT_COFFEE_DEFAULT) - 256;
 			ItemStatics.BLOCK_COFFEE = configuration.getBlock("Coffee",
 					ItemStatics.BLOCK_COFFEE_DEFAULT).getInt(
-					ItemStatics.BLOCK_COFFEE_DEFAULT);
+					ItemStatics.BLOCK_COFFEE_DEFAULT);*/
 
 		} catch (Exception e) {
 			FMLLog.severe("Fatigue has had a problem loading its configuration", e);

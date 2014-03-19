@@ -14,33 +14,33 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 public class HotCoffeeItem extends ItemFood {
-	Item woodenMug = new WoodenMugItem(ItemStatics.ITEM_WOODEN_MUG);
-	ItemStack woodMug = new ItemStack(woodenMug);
+    Item woodenMug = new WoodenMugItem();
+    ItemStack woodMug = new ItemStack(woodenMug);
 
-	public HotCoffeeItem(int id, int hungerRegen,
-			float probabilityOfPotionEffect, boolean isWolfsFavorite) {
-		super(id, hungerRegen, probabilityOfPotionEffect, isWolfsFavorite);
-		setMaxStackSize(1);
-		setCreativeTab(CreativeTabs.tabFood);
-		setUnlocalizedName("hotCoffee");
-		setTextureName("fatigue:hotCoffee");
-		setAlwaysEdible();
+    public HotCoffeeItem(int hungerRegen,
+                         float saturationModifier, boolean isWolfsFavorite) {
+        super(hungerRegen, saturationModifier, isWolfsFavorite);
+        setMaxStackSize(1);
+        setCreativeTab(CreativeTabs.tabFood);
+        setUnlocalizedName("hotCoffee");
+        setTextureName("fatigue:hotCoffee");
+        setAlwaysEdible();
 
-	}
+    }
 
-	@Override
-	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
-		super.onEaten(stack, world, player);
+    @Override
+    public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
+        super.onEaten(stack, world, player);
 
-		FatigueHandler.increaseFatigue(player, 3000);
-		
-		player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 600,
-				3));
-		return woodMug;
-	}
+        FatigueHandler.increaseFatigue(player, 3000);
 
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-		return EnumAction.drink;
-	}
+        player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 600,
+                3));
+        return woodMug;
+    }
+
+    public EnumAction getItemUseAction(ItemStack par1ItemStack) {
+        return EnumAction.drink;
+    }
 
 }

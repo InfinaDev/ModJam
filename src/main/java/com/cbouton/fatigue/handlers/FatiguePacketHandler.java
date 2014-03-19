@@ -4,37 +4,27 @@ import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
 import com.cbouton.fatigue.lib.Statics;
+import java.util.*;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageCodec;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet250CustomPayload;
-import cpw.mods.fml.common.network.IPacketHandler;
-import cpw.mods.fml.common.network.Player;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.network.INetHandler;
+import net.minecraft.network.NetHandlerPlayServer;
 
-public class FatiguePacketHandler implements IPacketHandler {
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.FMLEmbeddedChannel;
+import cpw.mods.fml.common.network.FMLOutboundHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.internal.FMLProxyPacket;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-	@Override
-	public void onPacketData(INetworkManager manager,
-			Packet250CustomPayload packet, Player player) {
-		if (packet.channel.equals(Statics.CHANNEL)) {
-			handlePacket(packet, (EntityPlayer) player);
-		}
+public class FatiguePacketHandler {}
 
-	}
-
-	@SuppressWarnings("unused")
-	private void handlePacket(Packet250CustomPayload packet, EntityPlayer player) {
-		DataInputStream inputStream = new DataInputStream(
-				new ByteArrayInputStream(packet.data));
-		int amount;
-
-		try {
-			amount = inputStream.readInt();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return;
-		}
-
-	}
-}
