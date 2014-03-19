@@ -1,5 +1,6 @@
 package com.cbouton.fatigue.gui;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
 
 import com.cbouton.fatigue.handlers.FatigueHandler;
@@ -23,7 +24,7 @@ public class FatigueBarGui extends Gui {
 	}
 
 	// Render this overlay after the xp bar is drawn
-	@ForgeSubscribe(priority = EventPriority.NORMAL)
+	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public void onRenderExperienceBar(RenderGameOverlayEvent event) {
 		if (event.isCancelable() || event.type != ElementType.EXPERIENCE) {
 			return;

@@ -13,8 +13,9 @@ import com.cbouton.fatigue.lib.ModItems;
 
 public class BlockCoffee extends BlockCocoa {
 
-	public BlockCoffee(int par1) {
-		super(par1);
+	public BlockCoffee() {
+        super(Material.plants);
+        this.setTickRandomly(true);
 	}
 
 	@Override

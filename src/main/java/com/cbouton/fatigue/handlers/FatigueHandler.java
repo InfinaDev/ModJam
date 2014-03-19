@@ -44,19 +44,19 @@ public class FatigueHandler {
 	}
 
 	public static void decreaseFatigue(EntityPlayer player, int amount) {
-		int difficulty = player.getEntityWorld().difficultySetting;
+		int difficulty = player.getEntityWorld().difficultySetting.getDifficultyId();
 		if (difficulty == 3) {
 			amount = amount * 2;
 		} else if (difficulty == 1) {
 			amount = (int) (amount * 0.5);
 		}
-		Integer amount1 = (Fatigue.fatigue.get(player.username) - amount);
+		Integer amount1 = (Fatigue.fatigue.get(player.getDisplayName()) - amount);
 		if (amount1 < 0) {
 			amount1 = 0;
 		}
 
 		Fatigue.fatigue.remove(player);
-		Fatigue.fatigue.put(player.username, amount1);
+		Fatigue.fatigue.put(player.getDisplayName(), amount1);
 		sendPacket(player, amount1);
 	}
 
@@ -67,13 +67,13 @@ public class FatigueHandler {
 		} else if (difficulty == 3) {
 			amount = (int) (amount * 0.5);
 		}
-		Integer amount1 = (Fatigue.fatigue.get(player.username) + amount);
+		Integer amount1 = (Fatigue.fatigue.get(player.getDisplayName()) + amount);
 		if (amount1 > 65535) {
 			amount1 = 65535;
 		}
 
 		Fatigue.fatigue.remove(player);
-		Fatigue.fatigue.put(player.username, amount1);
+		Fatigue.fatigue.put(player.getDisplayName(), amount1);
 		sendPacket(player, amount1);
 	}
 
@@ -87,13 +87,13 @@ public class FatigueHandler {
 		if ((Integer) amount == 0) {
 			if (difficulty == 3) {
 				amount = 30000;
-				Fatigue.fatigue.put(player.username, amount);
+				Fatigue.fatigue.put(player.getDisplayName(), amount);
 			} else {
 				amount = 60000;
-				Fatigue.fatigue.put(player.username, amount);
+				Fatigue.fatigue.put(player.getDisplayName(), amount);
 			}
 		} else {
-			Fatigue.fatigue.put(player.username, amount);
+			Fatigue.fatigue.put(player.getDisplayName(), amount);
 			/*
 			 * if (amount <= 3000){ player.addPotionEffect(new
 			 * PotionEffect(Potion.digSlowdown.getId(), 1200, 2));

@@ -29,16 +29,16 @@ public class ModItems {
 		Block coffeeblock = new BlockCoffee(ItemStatics.BLOCK_COFFEE);
 
 		GameRegistry.registerItem(woodenMug, woodenMug.getUnlocalizedName()
-				.replace("item.", ""), Statics.MODID);
+				.replace("item.", ""));
 		GameRegistry.registerItem(coffeeSeeds, coffeeSeeds.getUnlocalizedName()
-				.replace("item.", ""), Statics.MODID);
+				.replace("item.", ""));
 		GameRegistry.registerItem(coldCoffee, coldCoffee.getUnlocalizedName()
-				.replace("item.", ""), Statics.MODID);
+				.replace("item.", ""));
 		GameRegistry.registerItem(hotCoffee, hotCoffee.getUnlocalizedName()
-				.replace("item.", ""), Statics.MODID);
+				.replace("item.", ""));
 
 		// Crafting for coffee mug
-		ItemStack woodStack = new ItemStack(Block.planks);
+		ItemStack woodStack = new ItemStack(Block.getBlockFromName("plank"));
 		ItemStack stick = new ItemStack(Item.stick);
 		ItemStack woodMug = new ItemStack(woodenMug);
 

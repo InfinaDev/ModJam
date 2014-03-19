@@ -1,5 +1,6 @@
 package com.cbouton.fatigue.handlers;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.ForgeSubscribe;
@@ -13,19 +14,19 @@ public class FatigueEventHandler {
 	public NBTTagCompound nbt = new NBTTagCompound();
 	private String username = "";
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void playerSleep(PlayerSleepInBedEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		FatigueHandler.increaseFatigue(player, 18000);
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void breakBlock(BreakEvent event){
 		EntityPlayer player = event.getPlayer();
 		FatigueHandler.decreaseFatigue(player, 30);
 	}
 	
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void playerAttack(AttackEntityEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		if (!event.isCanceled()) {
@@ -33,7 +34,7 @@ public class FatigueEventHandler {
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void playerJoin(EntityJoinWorldEvent event) {
 		if (event.entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entity;
@@ -45,7 +46,7 @@ public class FatigueEventHandler {
 		}
 	}
 	
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void playerSave(WorldEvent.Save event) {
 		nbt.setInteger("FatigueAmount", FatigueHandler.getFatigue(username));
 	}

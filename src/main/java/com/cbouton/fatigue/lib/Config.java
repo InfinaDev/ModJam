@@ -5,7 +5,7 @@ import java.util.logging.Level;
 
 import cpw.mods.fml.common.FMLLog;
 
-import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.config.Configuration;
 
 public class Config {
 
@@ -30,8 +30,7 @@ public class Config {
 					ItemStatics.BLOCK_COFFEE_DEFAULT);
 
 		} catch (Exception e) {
-			FMLLog.log(Level.SEVERE, e,
-					"Fatigue has had a problem loading its configuration");
+			FMLLog.severe("Fatigue has had a problem loading its configuration", e);
 		} finally {
 			configuration.save();
 		}
